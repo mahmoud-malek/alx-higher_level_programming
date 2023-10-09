@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * is_palindrome - checks if the list is a palindrome
@@ -10,28 +11,35 @@ int is_palindrome(listint_t **head)
 {
 	int len = 0, i = 0, j = 0;
 	listint_t *temp = *head;
-	listint_t *current = *head;
+	int *store = NULL;
 
 	if (!head || !*head)
 		return (1);
 
-	while (temp != NULL)
+	while (temp)
 	{
 		temp = temp->next;
 		len++;
 	}
 
-	temp = *head;
-	for (; current && i < (len / 2); i++, current = current->next)
-	{
-		j = i;
-		temp = current;
-		while (temp && j < (len - i - 1))
-			temp = temp->next, j++;
+	store = malloc(len * sizeof(int));
+	if (!store)
+		return (-1);
 
-		if (temp && temp->n != current->n)
-			return (0);
+	temp = *head;
+	while (temp)
+	{
+		store[j++] = temp->n;
+		temp = temp->next;
 	}
 
+	for (j -= 1; i < j; i++, j--)
+		if (i < j && store[i] != store[j])
+		{
+			free(store);
+			return (0);
+		}
+
+	free(store);
 	return (1);
 }
