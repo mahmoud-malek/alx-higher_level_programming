@@ -2,6 +2,26 @@
 #include <stdlib.h>
 
 /**
+ * reverse_list - reverses a linked list
+ * @head: pointer to the head of the list
+ * Return: pointer to the head of the reversed list
+ */
+
+listint_t *reverse_list(listint_t *head)
+{
+	listint_t *prev = NULL, *next = NULL;
+
+	while (head)
+	{
+		next = head->next;
+		head->next = prev;
+		prev = head;
+		head = next;
+	}
+	return (prev);
+}
+
+/**
  * is_palindrome - checks if the list is a palindrome
  * @head: is the head node of the linked list
  * Return: 1 if palindrome and 0 otherwise
@@ -9,37 +29,42 @@
 
 int is_palindrome(listint_t **head)
 {
-	int len = 0, i = 0, j = 0;
-	listint_t *temp = *head;
-	int *store = NULL;
+	listint_t *fast = *head, *slow = *head;
+	listint_t *mid = NULL;
+	int res = 1;
 
-	if (!head || !*head)
+	if (!head || !(*head) || !(*head)->next)
 		return (1);
 
-	while (temp)
+	/*getting the last and the middle node to reverse*/
+	while (fast && fast->next)
 	{
-		temp = temp->next;
-		len++;
+		fast = fast->next->next;
+		slow = slow->next;
 	}
 
-	store = malloc(len * sizeof(int));
-	if (!store)
-		return (-1);
+	/*In case of odd number of nodes, the fast ptr will not be NuLL*/
+	if (fast)
+		mid = slow, slow = slow->next;
 
-	temp = *head;
-	while (temp)
+	slow = reverse_list(slow);
+	fast = *head;
+
+	while (slow)
 	{
-		store[j++] = temp->n;
-		temp = temp->next;
-	}
-
-	for (j -= 1; i < j; i++, j--)
-		if (i < j && store[i] != store[j])
+		if (fast->n != slow->n)
 		{
-			free(store);
-			return (0);
+			res = 0;
+			break;
 		}
+		fast = fast->next;
+		slow = slow->next;
+	}
 
-	free(store);
-	return (1);
+	slow = reverse_list(slow);
+
+	if (mid)
+		mid->next = slow;
+
+	return (res);
 }
