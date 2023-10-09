@@ -30,7 +30,6 @@ listint_t *reverse_list(listint_t *head)
 int is_palindrome(listint_t **head)
 {
 	listint_t *fast = *head, *slow = *head;
-	listint_t *mid = NULL;
 	int res = 1;
 
 	if (!head || !(*head) || !(*head)->next)
@@ -45,7 +44,7 @@ int is_palindrome(listint_t **head)
 
 	/*In case of odd number of nodes, the fast ptr will not be NuLL*/
 	if (fast)
-		mid = slow, slow = slow->next;
+		slow = slow->next;
 
 	slow = reverse_list(slow);
 	fast = *head;
@@ -60,11 +59,6 @@ int is_palindrome(listint_t **head)
 		fast = fast->next;
 		slow = slow->next;
 	}
-
-	slow = reverse_list(slow);
-
-	if (mid)
-		mid->next = slow;
 
 	return (res);
 }
