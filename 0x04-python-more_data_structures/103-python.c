@@ -1,5 +1,9 @@
 #include <Python.h>
 
+/**
+ * print_python_list - prints info about lists
+ * @p: object to print about
+ */
 void print_python_list(PyObject *p)
 {
 	long int size = PyList_Size(p);
@@ -11,6 +15,11 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < size; i++)
 		printf("Element %d: %s\n", i, Py_TYPE(PyList_GetItem(p, i))->tp_name);
 }
+
+/**
+ * print_python_bytes - prints information about bytes
+ * @p: python object to print from
+ */
 
 void print_python_bytes(PyObject *p)
 {
