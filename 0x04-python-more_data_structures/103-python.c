@@ -3,63 +3,63 @@
 
 /**
  * print_python_list - prints info about lists
- * @p: object to print about
+ * @py_obj: object to print about
  */
 
-void print_python_list(PyObject *p)
+void print_python_list(PyObject *py_obj)
 {
-	long int size, i;
-	PyObject *item;
+	long int list_size, index;
+	PyObject *list_item;
 
 	printf("[*] Python list info\n");
 
-	if (!PyList_Check(p))
+	if (!PyList_Check(py_obj))
 	{
 		printf("  [ERROR] Invalid List Object\n");
 		return;
 	}
 
-	size = ((PyVarObject *)p)->ob_size;
-	printf("[*] Size of the Python List = %ld\n", size);
+	list_size = ((PyVarObject *)py_obj)->ob_size;
+	printf("[*] Size of the Python List = %ld\n", list_size);
 
-	for (i = 0; i < size; i++)
+	for (index = 0; index < list_size; index++)
 	{
-		item = ((PyListObject *)p)->ob_item[i];
-		printf("Element %ld: %s\n", i, item->ob_type->tp_name);
+		list_item = ((PyListObject *)py_obj)->ob_item[index];
+		printf("Element %ld: %s\n", index, list_item->ob_type->tp_name);
 	}
 }
 
 /**
  * print_python_bytes - prints information about bytes
- * @p: python object to print from
+ * @py_obj: python object to print from
  */
 
-void print_python_bytes(PyObject *p)
+void print_python_bytes(PyObject *py_obj)
 {
-	char *s;
-	Py_ssize_t size, i;
+	char *byte_string;
+	Py_ssize_t byte_size, index;
 
 	printf("[*] Python bytes\n");
 
-	if (!PyBytes_Check(p))
+	if (!PyBytes_Check(py_obj))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = ((PyVarObject *)p)->ob_size;
-	s = ((PyBytesObject *)p)->ob_sval;
+	byte_size = ((PyVarObject *)py_obj)->ob_size;
+	byte_string = ((PyBytesObject *)py_obj)->ob_sval;
 
-	printf("  Size of the Python Bytes = %ld\n", size);
-	printf("  Trying string: %s\n", s);
+	printf("  Size of the Python Bytes = %ld\n", byte_size);
+	printf("  Trying string: %s\n", byte_string);
 
-	if (size < 10)
-		printf("  First %ld bytes: ", size + 1);
+	if (byte_size < 10)
+		printf("  First %ld bytes: ", byte_size + 1);
 	else
 		printf("  First 10 bytes: ");
 
-	for (i = 0; i < size && i < 10; i++)
-		printf("%02hhx ", s[i]);
+	for (index = 0; index < byte_size && index < 10; index++)
+		printf("%02hhx ", byte_string[index]);
 
 	printf("\n");
 }
