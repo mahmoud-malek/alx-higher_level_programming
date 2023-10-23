@@ -83,7 +83,7 @@ void print_python_list(PyObject *p)
 	PyObject *item;
 	int i = 0;
 
-	fflush(stedou);
+	fflush(stdout);
 	printf("[*] Python list info\n");
 
 	if (!PyList_CheckExact(p))
