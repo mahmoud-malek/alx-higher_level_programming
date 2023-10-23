@@ -53,7 +53,7 @@ void print_python_bytes(PyObject *p)
 
 	size = PyBytes_Size(p);
 	printf("  size: %zd\n", size);
-	string = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
+	string = ((PyBytesObject *)(p))->ob_sval;
 	printf("  trying string: %s\n", string);
 	printf("  first %zd bytes:", size < 10 ? size + 1 : 10);
 
