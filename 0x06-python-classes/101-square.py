@@ -82,7 +82,7 @@ class Square:
         """Return a string representation of the square."""
         if self.__size == 0:
             return ""
-        
+
         result = ""
         for i in range(self.__position[1]):
             result += "\n"
