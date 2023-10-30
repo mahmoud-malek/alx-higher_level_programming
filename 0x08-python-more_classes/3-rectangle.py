@@ -7,7 +7,7 @@ This module defines a Rectangle class
 class Rectangle:
     """
     A Rectangle class with attributes width and height, and methods area,
-    perimeter, __str__, __repr__, __del__, bigger_or_equal and square.
+    perimeter, and __str__.
     """
     print_symbol = '#'
 
@@ -74,4 +74,5 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return (str(self.print_symbol) * self.__width + '\n') * self.__height
+        return ((str(self.print_symbol) * self.__width + '\n') *
+                self.__height[:-1])

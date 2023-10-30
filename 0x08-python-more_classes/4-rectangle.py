@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 This module defines a Rectangle class
 """
@@ -9,7 +10,6 @@ class Rectangle:
     A Rectangle class with attributes width and height, and methods area,
     perimeter, __str__, __repr__, __del__, bigger_or_equal and square.
     """
-    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """
@@ -17,6 +17,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        self.print_symbol = '#'
 
     @property
     def width(self):
