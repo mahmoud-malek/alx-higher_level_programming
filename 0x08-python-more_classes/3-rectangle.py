@@ -9,7 +9,6 @@ class Rectangle:
     A Rectangle class with attributes width and height, and methods area,
     perimeter, and __str__.
     """
-    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """
@@ -74,5 +73,4 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return ((str(self.print_symbol) * self.__width + '\n') *
-                self.__height[:-1])
+        return (('#' * self.__width + '\n') * self.__height).rstrip()
