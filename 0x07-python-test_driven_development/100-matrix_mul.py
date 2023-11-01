@@ -24,9 +24,9 @@ def matrix_mul(m_a, m_b):
                 the multiplication of m_a by m_b.
 
     Raises:
-        TypeError: If either m_a or m_b is not a list of lists of
-                 integers/floats, if either m_a or m_b is empty,
-                  or if either m_a or m_b has different-sized rows.
+        TypeError: If either m_a or m_b is not a list of lists of \
+                 integers/floats, if either m_a or m_b is empty, \
+                 or if either m_a or m_b has different-sized rows.
         ValueError: If m_a and m_b cannot be multiplied.
 
     Example:
@@ -40,8 +40,8 @@ def matrix_mul(m_a, m_b):
     # Check if m_a and m_b are lists of lists
     if not all(isinstance(row, list) for row in m_a) or not \
             all(isinstance(row, list) for row in m_b):
-        raise TypeError("m_a must be a list of lists or m_b \
-         must be a list of lists")
+        raise TypeError("m_a must be a list of lists or "
+                        "m_b must be a list of lists")
 
     # Check if m_a and m_b are not empty
     if not m_a or not m_b:
@@ -59,8 +59,8 @@ def matrix_mul(m_a, m_b):
     # Check if m_a and m_b are rectangles
     if len(set(len(row) for row in m_a)) != 1 or \
             len(set(len(row) for row in m_b)) != 1:
-        raise TypeError("Each row of m_a must be of the same size or \
-            each row of m_b must be of the same size")
+        raise TypeError("Each row of m_a must be of the same size or "
+                        "each row of m_b must be of the same size")
 
     # Check if m_a and m_b can be multiplied
     if len(m_a[0]) != len(m_b):
