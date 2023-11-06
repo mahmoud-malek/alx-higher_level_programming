@@ -16,6 +16,9 @@ Example:
 
 
 class MyList(list):
+
+    """ a class """
+
     def print_sorted(self):
         """
         Print the list in ascending order.
