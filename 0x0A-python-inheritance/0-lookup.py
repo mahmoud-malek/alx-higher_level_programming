@@ -1,11 +1,20 @@
 #!/usr/bin/python3
 
+"""A module that defines a function to lookup public
+ attributes and methods of an object."""
 
-""" A module """
 
 def lookup(obj):
-	""" a function """
-	all = dir(obj)
-	puplic = [attr for attr in all if not attr.startswith('__')]
+    """
+    Return a list of public attributes and methods of an object.
 
-	return puplic
+    Args:
+        obj: The object to inspect.
+
+    Returns:
+        A list of public attributes and methods of the object.
+    """
+
+    all_attributes = dir(obj)
+    public = [attr for attr in all_attributes if not attr.startswith('__')]
+    return public

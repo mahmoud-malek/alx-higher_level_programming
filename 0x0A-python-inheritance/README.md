@@ -3,6 +3,7 @@
 Python Inheritance project for ALX Software Engineering program.
 
 ## Table of Contents
+
 - [Description](#description)
 - [Learning Objectives](#learning-objectives)
 - [Requirements](#requirements)
