@@ -15,6 +15,4 @@ def lookup(obj):
         A list of public attributes and methods of the object.
     """
 
-    all_attributes = dir(obj)
-    public = [attr for attr in all_attributes if not attr.startswith('__')]
-    return public
+    return dir(obj)
