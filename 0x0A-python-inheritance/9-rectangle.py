@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-""" class base """
+"""
+more class base
+"""
 
 
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """ Rectangle """
+    """ definition of a Rectangle """
     def __init__(self, width, height):
         """ constructor and width, height"""
         self.__width = width
