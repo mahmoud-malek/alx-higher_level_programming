@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-import json
+
 """AUTOHR: MAHMOUD ABDEL MALEK """
+import json
 
 
 def from_json_string(my_str):
