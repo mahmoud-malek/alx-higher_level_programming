@@ -6,6 +6,10 @@ if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
+    if (len(argv) != 4):
+        print("Usage: {} username password database_name".format(argv[0]))
+        exit(1)
+
     username = argv[1]
     password = argv[2]
     dbName = argv[3]
@@ -15,7 +19,8 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%%' ORDER BY id ASC")
+    cur.execute(
+        "SELECT * FROM states WHERE name LIKE BINARY 'N%%' ORDER BY id ASC")
     rows = cur.fetchall()
 
     for row in rows:
