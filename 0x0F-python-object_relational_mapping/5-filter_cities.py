@@ -22,10 +22,7 @@ if __name__ == "__main__":
 
     rows = cur.fetchall()
 
-    for row in rows:
-        for col in row:
-            print(col, end="")
-        print(", " if row != rows[-1] else "\n", end="")
+    print(", ".join(city[0] for city in rows))
 
     cur.close()
     db.close()
