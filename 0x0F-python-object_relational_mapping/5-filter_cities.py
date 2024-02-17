@@ -24,7 +24,8 @@ if __name__ == "__main__":
 
     for row in rows:
         for col in row:
-            print(col, end=" ")
+            print(col, end="")
+        print(", " if row != rows[-1] else "", end="")
 
     cur.close()
     db.close()
