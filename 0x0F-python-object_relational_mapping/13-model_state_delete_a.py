@@ -27,6 +27,6 @@ if __name__ == "__main__":
     session = Session()
 
     # query the database
-    session.query(State).filter(State.id == 2).detete()
+    session.query(State).filter(State.name.like('%a%')).delete()
     session.commit()
     session.close()
