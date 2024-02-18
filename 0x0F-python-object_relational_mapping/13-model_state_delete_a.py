@@ -27,7 +27,6 @@ if __name__ == "__main__":
     session = Session()
 
     # query the database
-    session.query(State).filter(State.id == 2).update(
-        {State.name: "New Mexico"})
+    session.quert(State).filter(State.id == 2).detete()
     session.commit()
     session.close()
