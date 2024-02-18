@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-""" a script that changes the name of a State object
- from the database hbtn_0e_6_usa"""
+""" a script that deletes all State objects with a name
+ containing the letter a from the database hbtn_0e_6_usa"""
 
 
 if __name__ == "__main__":
@@ -27,6 +27,6 @@ if __name__ == "__main__":
     session = Session()
 
     # query the database
-    session.quert(State).filter(State.id == 2).detete()
+    session.query(State).filter(State.id == 2).detete()
     session.commit()
     session.close()
